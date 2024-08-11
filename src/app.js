@@ -44,7 +44,7 @@ app.use(
 );
 
 app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, ".." ,'dist')));
 
 
 app.get('*', (req, res) => {
