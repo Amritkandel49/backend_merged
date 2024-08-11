@@ -28,7 +28,7 @@ app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; connect-src 'self' https://futsal-backend-tylv.onrender.com"
+    "default-src 'self'; connect-src 'self' https://kickstart-client.onrender.com"
   );
   next();
 });
