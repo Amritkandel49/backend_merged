@@ -12,7 +12,7 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    "https://futsal-frontend-mq4hu9kt7-amritkandel49s-projects.vercel.app/",
+    "https://kickstart-client.onrender.com",
     "http://localhost:5173/",
     "http://localhost:8000/",
   ],
@@ -21,7 +21,7 @@ const corsOptions = {
   credentials: true,
 };
 
-// app.options("*", cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(cors(corsOptions));
 
