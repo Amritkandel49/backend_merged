@@ -1,9 +1,8 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import path from 'path';
-import { fileURLToPath } from 'url';
-
+import path from "path";
+import { fileURLToPath } from "url";
 
 // Get the directory name equivalent to __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -12,7 +11,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 const corsOptions = {
-  origin: ["https://futsal-frontend-mq4hu9kt7-amritkandel49s-projects.vercel.app/", "http://localhost:5173/", "http://localhost:8000/"],
+  origin: [
+    "https://futsal-frontend-mq4hu9kt7-amritkandel49s-projects.vercel.app/",
+    "http://localhost:5173/",
+    "http://localhost:8000/",
+  ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type, Authorization",
   credentials: true,
@@ -25,14 +28,10 @@ app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' https:; script-src 'self'; style-src 'self' https:;"
+    "default-src 'self'; connect-src 'self' https://futsal-backend-tylv.onrender.com"
   );
   next();
 });
-
-
-
-
 
 app.use(cookieParser());
 
@@ -44,11 +43,10 @@ app.use(
 );
 
 app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, ".." ,'dist')));
+app.use(express.static(path.join(__dirname, "..", "dist")));
 
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 import ownerRouter from "./routes/owner.route.js";
