@@ -1,7 +1,13 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import path from 'path'
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+
+// Get the directory name equivalent to __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
